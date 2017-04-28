@@ -26,7 +26,7 @@ clc
 
 
 %% Parameters you may control
-desType = 4; % Set to 1 for SIFT, 2 for DSP, 3 for ASV-SIFT(1S), 4 for ASV-SIFT(1M2M).
+desType = 8; % Set to 1 for SIFT, 2 for DSP, 3 for ASV-SIFT(1S), 4 for ASV-SIFT(1M2M).
 detectType = 1; % 1 for DoGAff of vlfeat covdet function with affine approximation
 samMax = 5000; % Default 5000 keypoints (already sorted by peakscores in extraction)
 isPlot = 1; % Set to 1 and the PR-curve will show.
@@ -94,6 +94,38 @@ for i =1:8
             load([nameD2,'/1M2M']);
             f2 = f;
             d2 = d_1m2m;
+        elseif desType == 5
+            load([nameD1,'/CSASV']);
+            f1 = f;
+            d1 = d_csasv;
+            
+            load([nameD2,'/CSASV']);
+            f2 = f;
+            d2 = d_csasv;
+        elseif desType == 6
+            load([nameD1,'/NCASV']);
+            f1 = f;
+            d1 = d_ncasv;
+            
+            load([nameD2,'/NCASV']);
+            f2 = f;
+            d2 = d_ncasv;
+        elseif desType == 7
+            load([nameD1,'/ECASV']);
+            f1 = f;
+            d1 = d_ecasv;
+            
+            load([nameD2,'/ECASV']);
+            f2 = f;
+            d2 = d_ecasv;
+        elseif desType == 8
+            load([nameD1,'/PCASV']);
+            f1 = f;
+            d1 = d_pcasv;
+            
+            load([nameD2,'/PCASV']);
+            f2 = f;
+            d2 = d_pcasv;
         else
             fprintf('Wrong "desType" choice!!! Error!!!\n');
             stop
@@ -192,6 +224,14 @@ if isSave == 1
         save([nameR,'allResults_asv'],'AP');
     elseif desType ==4
         save([nameR,'allResults_1m2m'],'AP');
+    elseif desType ==5
+        save([nameR,'allResults_csasv'],'AP');
+    elseif desType ==6
+        save([nameR,'allResults_ncasv'],'AP');
+    elseif desType ==7
+        save([nameR,'allResults_ecasv'],'AP');
+    elseif desType ==8
+        save([nameR,'allResults_pcasv'],'AP');
     else
         fprintf('Wrong "desType" choice!!! Error!!!\n');
         stop

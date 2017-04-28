@@ -1,8 +1,8 @@
 %% Show descriptor result
 function [] = TYY_showResults()
 
-desType1 = 1;
-desType2 = 2;
+desType1 = 8;
+desType2 = 3;
 
 allmAP(desType1)
 headTohead(desType1,desType2)
@@ -32,6 +32,14 @@ elseif desType ==3
     load([nameR,'allResults_asv.mat'])
 elseif desType ==4
     load([nameR,'allResults_1m2m.mat'])    
+elseif desType ==5
+    load([nameR,'allResults_csasv.mat'])    
+elseif desType ==6
+    load([nameR,'allResults_ncasv.mat'])    
+elseif desType ==7
+    load([nameR,'allResults_ecasv.mat'])    
+elseif desType ==8
+    load([nameR,'allResults_pcasv.mat'])    
 else
     stop
 end
@@ -77,6 +85,18 @@ for i = 1:2
         pairAP(i,:) = AP;
     elseif desType(i) ==4
         load([nameR,'allResults_1m2m.mat'])
+        pairAP(i,:) = AP;
+    elseif desType(i) ==5
+        load([nameR,'allResults_csasv.mat'])
+        pairAP(i,:) = AP;
+    elseif desType(i) ==6
+        load([nameR,'allResults_ncasv.mat'])
+        pairAP(i,:) = AP;
+    elseif desType(i) ==7
+        load([nameR,'allResults_ecasv.mat'])
+        pairAP(i,:) = AP;
+    elseif desType(i) ==8
+        load([nameR,'allResults_pcasv.mat'])
         pairAP(i,:) = AP;
     end
 end
