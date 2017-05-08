@@ -1,7 +1,7 @@
 %% Show descriptor result
 function [] = TYY_showResults()
 
-desType1 = 8;
+desType1 = 9;
 desType2 = 3;
 
 allmAP(desType1)
@@ -39,7 +39,9 @@ elseif desType ==6
 elseif desType ==7
     load([nameR,'allResults_ecasv.mat'])    
 elseif desType ==8
-    load([nameR,'allResults_pcasv.mat'])    
+    load([nameR,'allResults_pcasv.mat'])     
+elseif desType ==9
+    load([nameR,'allResults_chasv.mat'])    
 else
     stop
 end
@@ -97,6 +99,9 @@ for i = 1:2
         pairAP(i,:) = AP;
     elseif desType(i) ==8
         load([nameR,'allResults_pcasv.mat'])
+        pairAP(i,:) = AP;
+    elseif desType(i) ==9
+        load([nameR,'allResults_chasv.mat'])
         pairAP(i,:) = AP;
     end
 end
